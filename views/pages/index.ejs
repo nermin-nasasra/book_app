@@ -12,6 +12,20 @@
 </head>
 <body>
     <header id="header22">Hello World</header>
-    <main></main>
+    <main>
+        <section>
+            <%books.forEach(book =>{%>
+            <article>
+                <img src="<%= book.image_url%>" >
+              <h4>BOOK: <span><%=book.title%></span></h4>
+              <p><%=book.authors%><p>
+              <p><%= book.description%></p>
+              <p>ISBN: <%= book.isbn%></p>
+              <p>bookshelf: <%= book.bookshelf%></p>
+              <a class="booknum" href="/books/<%=book.id%>">Number of Books</a>
+            </article>
+            <% }) %>
+          </section>
+    </main>
 </body>
 </html>

@@ -36,7 +36,9 @@ function findBook(req, res) {
 
 
         })
-        .catch((err) => handleError(err, res));
+        .catch((err) => {
+            errorHandler(err, req, res);
+});
 }
 function Book(data) {
     this.authors = data.volumeInfo.authors;
@@ -46,6 +48,11 @@ function Book(data) {
 }
 app.listen(PORT, () => console.log(`runing in port ${PORT}`))
 /////////////////////////////////////////////////////////
-const handleError = (error, response) => {
-    response.render('pages/error', { error: error })
-}
+app.use('*', notFoundHandler);
+
+function notFoundHandler(req, res) {
+    res.status(404).send('PAGE NOT FOUND');
+  }
+  function errorHandler(err, req, res) {
+    res.status(500).render('pages/error', { error: err });
+  }

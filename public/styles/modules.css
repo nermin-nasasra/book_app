@@ -1,0 +1,39 @@
+
+#p1{
+    font-size: xx-large;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    color: white;
+    /* padding-left: 20px;
+    padding-top: 30px; */
+    margin-bottom: 0px;
+
+}
+#title,#author{
+    background-color: rgb(190, 181, 181);
+   width: 50px;
+   height: 25px;
+    margin-top: 40px;
+    
+}
+
+#p2{
+    background-color: rgb(71, 68, 68);
+    color: white;
+    width: 100%;
+    height: 60px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#header2{
+    background-color: coral;
+    color: rgb(44, 42, 42);
+}
+#header22{
+    background-color: tomato;
+    color: black;
+    text-align: center;
+    font-size: xx-large;
+}

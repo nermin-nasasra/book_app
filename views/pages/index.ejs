@@ -22,7 +22,8 @@
               <p><%= book.description%></p>
               <p>ISBN: <%= book.isbn%></p>
               <p>bookshelf: <%= book.bookshelf%></p>
-              <a class="booknum" href="/books/<%=book.id%>">Number of Books</a>
+              <button><a class="booknum" href="/books/<%=book.id%>">more details</a></button>
+              <!-- <button>more details</button> -->
             </article>
             <% }) %>
           </section>

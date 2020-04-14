@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../../../styles/layout.css">
     <title>Show</title>
 </head>
+
 <body>
     <h1>Search Results</h1>
     <section>
@@ -27,11 +29,14 @@
                     <input type="hidden" name="image" value="<%-  book.image_url %>">
                     <input type="hidden" name="description" value="<%- book.description %>">
                     <button type="submit">Add to bookshelf</button>
+                  
+
                 </form>
+                <!-- <button><a class="booknum" href="/books/<%=book.id%>">Add to bookshelf</a></button> -->
             </li>
             <% }) %>
         </ol>
     </section>
 </body>
-</html>
 
+</html>

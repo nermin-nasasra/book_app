@@ -42,19 +42,24 @@ function addTask(req, res) {
         errorHandler(err, req, res);
       });
   }
-app.get('/books/:books_id', sssss);
-function sssss (req, res){
+app.get('/books/:books_id', setid);
+function setid (req, res){
     const SQL = 'SELECT * FROM bookstable WHERE id=$1;';
     const values = [req.params.books_id];
     client
       .query(SQL, values)
       .then((results) => {
-        res.render('pages/books/detail', { booknew: results.rows[0].id });
+        res.render('pages/books/detail', { booknew2: results.rows });
       })
       .catch((err) => {
         errorHandler(err, req, res);
       });
 }
+app.get('/books/add', details);
+function details (req, res){
+res.redirect('/');
+}
+
 app.get('/searches/new', newSearch);
 function newSearch(request, response) {
     response.render('pages/searches/new');

@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="../../../styles/style.css"> -->
-    <!-- <link rel="stylesheet" href="./styles/reset.css"> -->
-    <link rel="stylesheet" href="../../../styles/base.css">
-    <link rel="stylesheet" href="../../../styles/modules.css">
-    <link rel="stylesheet" href="../../../styles/layout.css">
+    <link rel="stylesheet" href="/style/reset.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/incons.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/modules.css">
+    <title>index</title>
 </head>
 <body>
-    <header id="header22">Hello World</header>
+    <header>
+        <nav>
+          <div class="list">
+            <i class="fa fa-bars menu" aria-hidden="true"></i>
+          </div>
+          <ul>
+            <li>
+              <a href="#">Home </a>
+            </li>
+            <li>
+              <a href="#">About us </a>
+            </li>
+            <li>
+              <a href="#">Books </a>
+            </li>
+            <li>
+              <a href="#">Contact </a>
+            </li>
+          </ul>
+        </nav>
+        <h1> Best Books! </h1>
+      </header>
     <main>
         <section>
+            <ol>
             <%booksnew.forEach(book =>{%>
-            <article>
-                <img src="<%=book.image_url%>" >
-              <h4>BOOK: <span><%=book.title%></span></h4>
-              <p><%=book.authors%><p>
-              <p><%= book.description%></p>
-              <p>ISBN: <%= book.isbn%></p>
-              <p>bookshelf: <%= book.bookshelf%></p>
-              <button><a class="booknum" href="/books/<%=book.id%>">more details</a></button>
-              <!-- <button>more details</button> -->
-            </article>
-            <% }) %>
-          </section>
-    </main>
-</body>
-</html>

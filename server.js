@@ -34,7 +34,7 @@ app.post('/books', addTask);
 function addTask(req, res) {
     const { title,authors,isbn,image_url,description,bookshelf} = req.body;
     const SQL ='INSERT INTO bookstable (title,authors,isbn,image_url,description,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
-    const values = [title,authors,isbn,image_url,description,bookshelf];
+    const values =[title,authors,isbn,image_url,description,bookshelf];
     
     return client.query(SQL, values)
       .then(() => {
@@ -66,7 +66,7 @@ res.redirect('/');
 app.put('/update/:books_id', update);
 
 function update(req, res) {
-    let buttonClicked = req.params.book;
+    let buttonClicked = req.params.books_id;
     let title = req.body.title;
     let image = req.body.image;
     let authors = req.body.authors;
@@ -86,7 +86,7 @@ function update(req, res) {
 
 app.delete('/delete/:books_id', delate);
 function delate(req, res) {
-    let bookId = req.params.book;
+    let bookId = req.params.books_id;
     let SQL = 'DELETE FROM bookstable WHERE id=$1;';
     let safeValues = [bookId];
     client.query(SQL, safeValues)

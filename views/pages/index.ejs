@@ -16,7 +16,7 @@
         <section>
             <%booksnew.forEach(book =>{%>
             <article>
-                <img src="<%= book.image_url%>" >
+                <img src="<%=book.image_url%>" >
               <h4>BOOK: <span><%=book.title%></span></h4>
               <p><%=book.authors%><p>
               <p><%= book.description%></p>

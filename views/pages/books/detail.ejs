@@ -25,17 +25,17 @@
                     <p><%= book.bookshelf%></p>
                    
 
-                    <button id="update">update</button>
-                    <form action="/delete/<%=data.id%>?_method=delete" method="post">
-                        <button type="submit">Delete</button>
-                    </form>
-                    <form action="/books/<%=book.id%>" method="post">
+                     <button id="update">update</button>
+        <form action="/delete/<%=data.id%>?_method=delete" method="post">
+            <button type="submit">Delete</button>
+        </form>
+                    <!-- <form action="/books" method="post">
                         <input type="hidden" name="title" value="<%- book.title %>">
                         <input type="hidden" name="authors" value="<%- book.authors %>">
                         <input type="hidden" name="isbn" value="<%- book.isbn%>">
                         <input type="hidden" name="image" value="<%-  book.image_url %>">
                         <input type="hidden" name="description" value="<%- book.description %>">
-                        <button type="submit">show detail</button>
+                        <button type="submit">show detail</button> -->
                     </form>
                 </li>
                 <% }) %>

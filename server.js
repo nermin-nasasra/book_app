@@ -6,9 +6,11 @@ const pg = require('pg');
 const PORT = process.env.PORT || 4000;
 const app = express();
 const client = new pg.Client(process.env.DATABASE_URL);
+const methodOverride = require('method-override');
 client.on('error', (err) => console.log(err));
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 // app.get('/hello', (req, res) => {
@@ -32,7 +34,7 @@ app.post('/books', addTask);
 function addTask(req, res) {
     const { title,authors,isbn,image_url,description,bookshelf} = req.body;
     const SQL ='INSERT INTO bookstable (title,authors,isbn,image_url,description,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
-    const values = [title,authors,isbn,image_url,description,bookshelf];
+    const values =[title,authors,isbn,image_url,description,bookshelf];
     
     return client.query(SQL, values)
       .then(() => {
@@ -60,6 +62,42 @@ function details (req, res){
 res.redirect('/');
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+app.put('/update/:books_id', update);
+
+function update(req, res) {
+    let buttonClicked = req.params.books_id;
+    let title = req.body.title;
+    let image = req.body.image;
+    let authors = req.body.authors;
+    let isbn = req.body.isbn;
+    let bookshelf = req.body.bookshelf;
+    let description = req.body.description;
+    if (!Array.isArray(authors)) {
+        authors = [authors];
+    }
+    let SQL = 'UPDATE bookstable SET title=$1,image=$2,authors=$3,ISBN=$4,bookshelf=$5,description=$6 WHERE id=$7;';
+    let safeValues = [title, image, authors, isbn, bookshelf, description, buttonClicked];
+    client.query(SQL, safeValues)
+        .then(result => {
+            setid(req, res);
+        });
+}
+
+app.delete('/delete/:books_id', delate);
+function delate(req, res) {
+    let bookId = req.params.books_id;
+    let SQL = 'DELETE FROM bookstable WHERE id=$1;';
+    let safeValues = [bookId];
+    client.query(SQL, safeValues)
+        .then(() => {
+            getbook(req, res);
+        }).catch(error => {
+            errorHandler(err, req, res);
+        });
+}
+
+////////////////////////////////////////////////////////////////////////////////
 app.get('/searches/new', newSearch);
 function newSearch(request, response) {
     response.render('pages/searches/new');

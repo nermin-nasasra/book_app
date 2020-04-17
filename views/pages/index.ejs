@@ -38,29 +38,3 @@
         <section>
             <ol>
             <%booksnew.forEach(book =>{%>
-                <li>
-               <p class="img"> <img src="<%= book.image_url%>" ></p>
-               <p class="title">Book Title: <%= book.title %></p>
-               <p class="authors"><%= book.authors%></p>
-               <p class="description"><%= book.description%></p>
-               <p class="num"><%= book.isbn%></p>
-              <p>bookshelf: <%= book.bookshelf%></p>
-              <button class="hidden"><a class="booknum hidden " href="/books/<%=book.id%>">more details</a></button>
-              <!-- <button>more details</button> -->
-            </li>
-            <% }) %>
-        </ol>
-          </section>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.js">
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-  
-  $('.menu').click(function(){
-    $('ul').toggleClass('active')
-  })
-  }); 
-    </script>
-</body>
-</html>
